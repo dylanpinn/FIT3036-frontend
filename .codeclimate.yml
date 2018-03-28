@@ -1,0 +1,22 @@
+version: "2"
+plugins:
+  markdownlint:
+    enabled: true
+  stylelint:
+    enabled: true
+  fixme:
+    enabled: true
+  eslint:
+    enabled: true
+    chanel: "eslint-4"
+    config:
+      extensions:
+      - .es6
+      - .js
+      - .jsx
+      - .mjs
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript:
