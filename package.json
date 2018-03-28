@@ -11,7 +11,9 @@
     "flow-bin": "^0.68.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
-    "prettier": "^1.11.1"
+    "prettier": "^1.11.1",
+    "stylelint": "^9.1.3",
+    "stylelint-config-standard": "^18.2.0"
   },
   "scripts": {
     "precommit": "lint-staged",
