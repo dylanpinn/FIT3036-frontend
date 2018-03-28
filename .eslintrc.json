@@ -1,4 +1,13 @@
 {
-  "extends": ["react-app", "plugin:jsx-a11y/recommended"],
-  "plugins": ["jsx-a11y"]
+  "extends": [
+    "react-app",
+    "plugin:jsx-a11y/recommended",
+    "plugin:flowtype/recommended"
+  ],
+  "plugins": ["jsx-a11y", "flowtype"],
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": false
+    }
+  }
 }
