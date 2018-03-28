@@ -20,5 +20,3 @@ plugins:
     config:
       languages:
       - javascript:
-  git-legal:
-    enabled: true
