@@ -3,13 +3,14 @@ import * as React from 'react';
 import Map from './Map';
 import './App.css';
 import type { Rectangle } from './types';
+import type { Rectangle as RectangleComponent } from 'react-google-maps';
 
 type State = {
   rectangle: Rectangle
 };
 
 class App extends React.Component<*, State> {
-  rectangle: ?HTMLElement;
+  rectangle: ?RectangleComponent;
 
   constructor() {
     super();
@@ -23,13 +24,14 @@ class App extends React.Component<*, State> {
     };
   }
 
-  rectangleMounted = (ref: HTMLElement) => {
-    console.log(ref);
+  rectangleMounted = (ref: RectangleComponent) => {
     this.rectangle = ref;
   };
 
   onDragEnd = (e: MouseEvent) => {
-    console.log(this.rectangle.getBounds());
+    if (this.rectangle) {
+      console.log(this.rectangle.getBounds());
+    }
   };
 
   render() {
