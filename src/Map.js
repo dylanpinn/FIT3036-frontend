@@ -7,9 +7,11 @@ import {
   Marker,
   Rectangle
 } from 'react-google-maps';
+import type { Rectangle as RectangleType } from './types';
 
 type Props = {
-  isMarkerShown?: boolean
+  isMarkerShown?: boolean,
+  rectangle?: RectangleType
 };
 
 const defaultCenter = {
@@ -21,15 +23,9 @@ const Map = withScriptjs(
   withGoogleMap((props: Props) => (
     <GoogleMap defaultZoom={11} defaultCenter={defaultCenter}>
       {props.isMarkerShown && <Marker position={defaultCenter} />}
-      <Rectangle
-        draggable={true}
-        bounds={{
-          north: -37.9,
-          south: -37.8,
-          east: 145.1,
-          west: 145.0
-        }}
-      />
+      {props.rectangle && (
+        <Rectangle draggable={true} bounds={props.rectangle} />
+      )}
     </GoogleMap>
   ))
 );
