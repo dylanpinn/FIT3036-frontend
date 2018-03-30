@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "flow-bin": "^0.70.0",
+    "flow-typed": "^2.4.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
     "prettier": "^1.11.1",
@@ -22,7 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "flow": "flow",
+    "flow:update": "flow-typed install -o"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
