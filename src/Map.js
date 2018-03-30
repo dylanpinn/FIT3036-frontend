@@ -11,7 +11,9 @@ import type { Rectangle as RectangleType } from './types';
 
 type Props = {
   isMarkerShown?: boolean,
-  rectangle?: RectangleType
+  rectangle?: RectangleType,
+  rectangleOnDragEnd: (e: MouseEvent) => void,
+  rectangleMounted: (ref: any) => void
 };
 
 const defaultCenter = {
@@ -24,7 +26,12 @@ const Map = withScriptjs(
     <GoogleMap defaultZoom={11} defaultCenter={defaultCenter}>
       {props.isMarkerShown && <Marker position={defaultCenter} />}
       {props.rectangle && (
-        <Rectangle draggable={true} bounds={props.rectangle} />
+        <Rectangle
+          draggable={true}
+          bounds={props.rectangle}
+          onDragEnd={props.rectangleOnDragEnd}
+          ref={rectangle => props.rectangleMounted(rectangle)}
+        />
       )}
     </GoogleMap>
   ))

@@ -9,6 +9,8 @@ type State = {
 };
 
 class App extends React.Component<*, State> {
+  rectangle: ?HTMLElement;
+
   constructor() {
     super();
     this.state = {
@@ -20,6 +22,16 @@ class App extends React.Component<*, State> {
       }
     };
   }
+
+  rectangleMounted = (ref: HTMLElement) => {
+    console.log(ref);
+    this.rectangle = ref;
+  };
+
+  onDragEnd = (e: MouseEvent) => {
+    console.log(this.rectangle.getBounds());
+  };
+
   render() {
     return (
       <div className="App">
@@ -27,7 +39,9 @@ class App extends React.Component<*, State> {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <Map
+          rectangleMounted={this.rectangleMounted}
           rectangle={this.state.rectangle}
+          rectangleOnDragEnd={this.onDragEnd}
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `400px` }} />}
