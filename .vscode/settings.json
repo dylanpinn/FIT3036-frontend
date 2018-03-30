@@ -1,6 +1,9 @@
 {
   "eslint.enable": true,
   "eslint.packageManager": "yarn",
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
   "flow.enabled": true,
   "flow.useNPMPackagedFlow": true,
   "javascript.validate.enable": false,
