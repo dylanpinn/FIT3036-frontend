@@ -20,3 +20,5 @@ plugins:
     config:
       languages:
       - javascript:
+exclude_patterns:
+  - "flow-typed/"

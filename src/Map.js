@@ -4,18 +4,34 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker
+  Marker,
+  Rectangle
 } from 'react-google-maps';
+import type { Rectangle as RectangleType } from './types';
 
 type Props = {
-  isMarkerShown?: boolean
+  isMarkerShown?: boolean,
+  rectangle?: RectangleType,
+  rectangleOnDragEnd: (e: MouseEvent) => void,
+  rectangleMounted: (ref: any) => void
+};
+
+const defaultCenter = {
+  lat: -37.911716,
+  lng: 145.127197
 };
 
 const Map = withScriptjs(
   withGoogleMap((props: Props) => (
-    <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
-      {props.isMarkerShown && (
-        <Marker position={{ lat: -34.397, lng: 150.644 }} />
+    <GoogleMap defaultZoom={11} defaultCenter={defaultCenter}>
+      {props.isMarkerShown && <Marker position={defaultCenter} />}
+      {props.rectangle && (
+        <Rectangle
+          draggable={true}
+          bounds={props.rectangle}
+          onDragEnd={props.rectangleOnDragEnd}
+          ref={rectangle => props.rectangleMounted(rectangle)}
+        />
       )}
     </GoogleMap>
   ))
