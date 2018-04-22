@@ -48,9 +48,13 @@ class App extends React.Component<*, State> {
           rectangleOnDragEnd={this.onDragEnd}
           googleMapURL={mapURL}
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
+          containerElement={<div style={{ height: `800px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
+
+        <div>Total Area of Rectangle:</div>
+
+        <div>Total Surface Area of roads in rectangle:</div>
       </div>
     );
   }
