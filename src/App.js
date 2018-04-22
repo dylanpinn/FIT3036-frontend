@@ -30,7 +30,7 @@ class App extends React.Component<*, State> {
 
   onDragEnd = (e: MouseEvent) => {
     if (this.rectangle) {
-      console.log(this.rectangle.getBounds());
+      // console.log(this.rectangle.getBounds());
     }
   };
 
@@ -38,7 +38,7 @@ class App extends React.Component<*, State> {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">FIT3036 - Computer Science Project</h1>
         </header>
         <Map
           rectangleMounted={this.rectangleMounted}
