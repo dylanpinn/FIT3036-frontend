@@ -5,6 +5,7 @@ import './App.css';
 import type { Rectangle } from './types';
 import type { Rectangle as RectangleComponent } from 'react-google-maps';
 
+const GOOGLE_MAPS_API_KEY = 'AIzaSyC60FyPR7iVZWTMOjoWJdKrnRsM4MbTsUY';
 type State = {
   rectangle: Rectangle
 };
@@ -30,11 +31,12 @@ class App extends React.Component<*, State> {
 
   onDragEnd = (e: MouseEvent) => {
     if (this.rectangle) {
-      // console.log(this.rectangle.getBounds());
+      console.log(this.rectangle.getBounds());
     }
   };
 
   render() {
+    const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${GOOGLE_MAPS_API_KEY}&libraries=geometry,drawing,places`;
     return (
       <div className="App">
         <header className="App-header">
@@ -44,7 +46,7 @@ class App extends React.Component<*, State> {
           rectangleMounted={this.rectangleMounted}
           rectangle={this.state.rectangle}
           rectangleOnDragEnd={this.onDragEnd}
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+          googleMapURL={mapURL}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
