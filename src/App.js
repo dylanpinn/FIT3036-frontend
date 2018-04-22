@@ -7,7 +7,7 @@ import type { Rectangle as RectangleComponent } from 'react-google-maps';
 
 const GOOGLE_MAPS_API_KEY = 'AIzaSyC60FyPR7iVZWTMOjoWJdKrnRsM4MbTsUY';
 type State = {
-  rectangle: Rectangle,
+  rectangle?: Rectangle,
   totalArea: number,
   surfaceArea: number
 };
@@ -18,12 +18,6 @@ class App extends React.Component<*, State> {
   constructor() {
     super();
     this.state = {
-      rectangle: {
-        north: -37.9,
-        south: -37.8,
-        east: 145.1,
-        west: 145.0
-      },
       totalArea: 0,
       surfaceArea: 0
     };
@@ -35,12 +29,21 @@ class App extends React.Component<*, State> {
 
   onDragEnd = (e: MouseEvent) => {
     if (this.rectangle) {
-      console.log(this.rectangle.getBounds());
+      const bounds = this.rectangle.getBounds();
+      this.setState({
+        rectangle: {
+          north: bounds.f.f,
+          south: bounds.f.b,
+          east: bounds.b.f,
+          west: bounds.b.b
+        }
+      });
     }
   };
 
   render() {
     const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${GOOGLE_MAPS_API_KEY}&libraries=geometry,drawing,places`;
+
     return (
       <div className="App">
         <header className="App-header">
@@ -48,7 +51,7 @@ class App extends React.Component<*, State> {
         </header>
         <Map
           rectangleMounted={this.rectangleMounted}
-          rectangle={this.state.rectangle}
+          rectangle={true}
           rectangleOnDragEnd={this.onDragEnd}
           googleMapURL={mapURL}
           loadingElement={<div style={{ height: `100%` }} />}
