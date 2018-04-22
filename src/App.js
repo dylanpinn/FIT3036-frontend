@@ -7,7 +7,9 @@ import type { Rectangle as RectangleComponent } from 'react-google-maps';
 
 const GOOGLE_MAPS_API_KEY = 'AIzaSyC60FyPR7iVZWTMOjoWJdKrnRsM4MbTsUY';
 type State = {
-  rectangle: Rectangle
+  rectangle: Rectangle,
+  totalArea: number,
+  surfaceArea: number
 };
 
 class App extends React.Component<*, State> {
@@ -21,7 +23,9 @@ class App extends React.Component<*, State> {
         south: -37.8,
         east: 145.1,
         west: 145.0
-      }
+      },
+      totalArea: 0,
+      surfaceArea: 0
     };
   }
 
@@ -52,9 +56,14 @@ class App extends React.Component<*, State> {
           mapElement={<div style={{ height: `100%` }} />}
         />
 
-        <div>Total Area of Rectangle:</div>
+        <div>
+          Total Area of Rectangle:<span> {this.state.totalArea}</span>
+        </div>
 
-        <div>Total Surface Area of roads in rectangle:</div>
+        <div>
+          Total Surface Area of roads in rectangle:
+          <span> {this.state.surfaceArea}</span>
+        </div>
       </div>
     );
   }
