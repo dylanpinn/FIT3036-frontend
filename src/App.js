@@ -32,8 +32,8 @@ class App extends React.Component<*, State> {
       const bounds = this.rectangle.getBounds();
       this.setState({
         rectangle: {
-          north: bounds.f.f,
-          south: bounds.f.b,
+          south: bounds.f.f,
+          north: bounds.f.b,
           east: bounds.b.f,
           west: bounds.b.b
         }
@@ -53,6 +53,21 @@ class App extends React.Component<*, State> {
       if (response.ok) {
         const data = await response.json();
         this.setState({ totalArea: data });
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  calculateRoadArea = async () => {
+    try {
+      const response = await fetch('/roadArea', {
+        body: JSON.stringify(this.state.rectangle),
+        method: 'POST'
+      });
+      if (response.ok) {
+        const data = await response.json();
+        this.setState({ surfaceArea: data });
       }
     } catch (e) {
       console.error(e);
@@ -82,6 +97,7 @@ class App extends React.Component<*, State> {
         </div>
 
         <div>
+          <button onClick={this.calculateRoadArea}>Calculate Area</button>
           Total Surface Area of roads in rectangle:
           <span> {this.state.surfaceArea}</span>
         </div>
