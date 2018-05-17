@@ -1,4 +1,4 @@
-// flow-typed signature: fb2fc555a8eb8a2bf02a6baa4d1bf9d6
+// flow-typed signature: 04f7430fe63f7a078d24c118b9412c75
 // flow-typed version: <<STUB>>/stylelint_v^9.1.3/flow_v0.70.0
 
 /**
@@ -1078,6 +1078,10 @@ declare module 'stylelint/lib/utils/isKeyframeSelector' {
   declare module.exports: any;
 }
 
+declare module 'stylelint/lib/utils/isNestedProperty' {
+  declare module.exports: any;
+}
+
 declare module 'stylelint/lib/utils/isNumbery' {
   declare module.exports: any;
 }
@@ -2006,6 +2010,9 @@ declare module 'stylelint/lib/utils/isKeyframeRule.js' {
 }
 declare module 'stylelint/lib/utils/isKeyframeSelector.js' {
   declare module.exports: $Exports<'stylelint/lib/utils/isKeyframeSelector'>;
+}
+declare module 'stylelint/lib/utils/isNestedProperty.js' {
+  declare module.exports: $Exports<'stylelint/lib/utils/isNestedProperty'>;
 }
 declare module 'stylelint/lib/utils/isNumbery.js' {
   declare module.exports: $Exports<'stylelint/lib/utils/isNumbery'>;
