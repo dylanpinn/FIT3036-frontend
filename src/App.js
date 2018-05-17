@@ -38,6 +38,24 @@ class App extends React.Component<*, State> {
           west: bounds.b.b
         }
       });
+      if (this.state.rectangle) {
+        this.fetchArea(this.state.rectangle);
+      }
+    }
+  };
+
+  fetchArea = async (rectangle: Rectangle) => {
+    try {
+      const response = await fetch('/area', {
+        body: JSON.stringify(rectangle),
+        method: 'POST'
+      });
+      if (response.ok) {
+        const data = await response.json();
+        this.setState({ totalArea: data });
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
