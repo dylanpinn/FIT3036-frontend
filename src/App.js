@@ -102,6 +102,7 @@ class App extends React.Component<*, State> {
           <div className="information-wrapper">
             <h2>Instructions</h2>
             <p className="instructions">
+              {/* TODO: Add instructions. */}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
               ornare mi quam, non efficitur urna venenatis malesuada. Donec quis
               ipsum pharetra tellus maximus dictum feugiat quis orci.
