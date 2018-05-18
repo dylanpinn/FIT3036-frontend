@@ -22,3 +22,4 @@ plugins:
       - javascript:
 exclude_patterns:
   - "flow-typed/"
+  - "**/__tests__/
