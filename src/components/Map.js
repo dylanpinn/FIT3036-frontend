@@ -110,7 +110,7 @@ const RenderMap = withScriptjs(
         ref={rectangle => props.rectangleMounted(rectangle)}
       />
       <Circle
-        visible={true}
+        visible={false}
         center={props.center}
         radius={1000}
         ref={circle => props.circleMounted(circle)}
