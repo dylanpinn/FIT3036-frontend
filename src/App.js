@@ -82,24 +82,48 @@ class App extends React.Component<*, State> {
         <header className="App-header">
           <h1 className="App-title">FIT3036 - Computer Science Project</h1>
         </header>
-        <Map
-          rectangleMounted={this.rectangleMounted}
-          rectangle={true}
-          rectangleOnDragEnd={this.onDragEnd}
-          googleMapURL={mapURL}
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `800px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-        />
+        <div className="main">
+          <div className="map-wrapper">
+            <Map
+              rectangleMounted={this.rectangleMounted}
+              rectangle={true}
+              rectangleOnDragEnd={this.onDragEnd}
+              googleMapURL={mapURL}
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `800px` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+            />
+          </div>
 
-        <div>
-          Total Area of Rectangle:<span> {this.state.totalArea}</span>
-        </div>
+          <div className="information-wrapper">
+            <h2>Instructions</h2>
+            <p className="instructions">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+              ornare mi quam, non efficitur urna venenatis malesuada. Donec quis
+              ipsum pharetra tellus maximus dictum feugiat quis orci.
+              Pellentesque efficitur sapien magna, quis placerat velit faucibus
+              cursus. Vestibulum ante ipsum primis in faucibus orci luctus et
+              ultrices posuere cubilia Curae; Donec sagittis enim.
+            </p>
+            <div style={{ padding: '10px 0' }}>
+              Total Area of Rectangle:<span>
+                {' '}
+                {this.state.totalArea} m<sup>2</sup>
+              </span>
+            </div>
 
-        <div>
-          <button onClick={this.calculateRoadArea}>Calculate Area</button>
-          Total Surface Area of roads in rectangle:
-          <span> {this.state.surfaceArea}</span>
+            <div style={{ padding: '10px 0' }}>
+              <button onClick={this.calculateRoadArea}>Calculate Area</button>
+            </div>
+
+            <div style={{ padding: '10px 0' }}>
+              Total Surface Area of roads in rectangle:
+              <span>
+                {' '}
+                {this.state.surfaceArea} m<sup>2</sup>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     );

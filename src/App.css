@@ -8,3 +8,16 @@
 .App-title {
   font-size: 1.5em;
 }
+
+.main {
+  display: flex;
+}
+
+.map-wrapper {
+  width: 75%;
+}
+
+.information-wrapper {
+  width: 25%;
+  padding: 0 15px;
+}
