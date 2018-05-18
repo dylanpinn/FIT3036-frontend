@@ -84,7 +84,7 @@ class App extends React.Component<*, State> {
 
   handleControlChange = (event: SyntheticEvent<HTMLInputElement>) => {
     const target = event.currentTarget;
-    const value = target.value;
+    const value = Number(target.value);
     const name = target.name;
 
     this.setState({ [name]: value });

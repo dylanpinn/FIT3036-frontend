@@ -28,7 +28,7 @@ const initialRectangle = {
 
 const Map = withScriptjs(
   withGoogleMap((props: Props) => (
-    <GoogleMap defaultZoom={11} defaultCenter={props.centre}>
+    <GoogleMap defaultZoom={11} center={props.centre}>
       {props.rectangle && (
         <Rectangle
           draggable={true}
