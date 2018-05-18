@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Button from '@material-ui/core/Button';
 import Map from './components/Map';
 import MapControl from './components/MapControl';
 import Header from './components/Header';
@@ -123,7 +124,9 @@ class App extends React.Component<*, State> {
             </div>
 
             <div style={{ padding: '10px 0' }}>
-              <button onClick={this.calculateRoadArea}>Calculate Area</button>
+              <Button onClick={this.calculateRoadArea} color="primary">
+                Calculate Area
+              </Button>
             </div>
 
             <div style={{ padding: '10px 0' }}>
