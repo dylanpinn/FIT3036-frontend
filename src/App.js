@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Map from './components/Map';
 import MapControl from './components/MapControl';
 import './App.css';
@@ -76,6 +77,7 @@ class App extends React.Component<*, State> {
   render() {
     return (
       <div className="App">
+        <CssBaseline />
         <header className="App-header">
           <h1 className="App-title">FIT3036 - Computer Science Project</h1>
         </header>
