@@ -3,10 +3,8 @@ import * as React from 'react';
 import Map from './components/Map';
 import MapControl from './components/MapControl';
 import './App.css';
-import type { Rectangle } from './types';
-import type { Rectangle as RectangleComponent } from 'react-google-maps';
+import type { Rectangle, Coordinate } from './types';
 
-const GOOGLE_MAPS_API_KEY = 'AIzaSyC60FyPR7iVZWTMOjoWJdKrnRsM4MbTsUY';
 type State = {
   rectangle?: Rectangle,
   totalArea: number,
@@ -20,8 +18,6 @@ const roundNumber = numberToRound => {
 };
 
 class App extends React.Component<*, State> {
-  rectangle: ?RectangleComponent;
-
   constructor() {
     super();
     this.state = {
@@ -31,27 +27,6 @@ class App extends React.Component<*, State> {
       surfaceArea: 0
     };
   }
-
-  rectangleMounted = (ref: RectangleComponent) => {
-    this.rectangle = ref;
-  };
-
-  onDragEnd = (e: MouseEvent) => {
-    if (this.rectangle) {
-      const bounds = this.rectangle.getBounds();
-      this.setState({
-        rectangle: {
-          south: bounds.f.f,
-          north: bounds.f.b,
-          east: bounds.b.f,
-          west: bounds.b.b
-        }
-      });
-      if (this.state.rectangle) {
-        this.fetchArea(this.state.rectangle);
-      }
-    }
-  };
 
   fetchArea = async (rectangle: Rectangle) => {
     try {
@@ -91,9 +66,14 @@ class App extends React.Component<*, State> {
     this.setState({ [name]: value });
   };
 
-  render() {
-    const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${GOOGLE_MAPS_API_KEY}&libraries=geometry,drawing,places`;
+  updateCenter = (center: Coordinate) => {
+    this.setState({ lat: center.lat, lng: center.lng });
+  };
+  updateRect = (rectangle: Rectangle) => {
+    this.setState({ rectangle });
+  };
 
+  render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -102,14 +82,10 @@ class App extends React.Component<*, State> {
         <div className="main">
           <div className="map-wrapper">
             <Map
-              rectangleMounted={this.rectangleMounted}
-              rectangle={true}
-              rectangleOnDragEnd={this.onDragEnd}
-              googleMapURL={mapURL}
-              loadingElement={<div style={{ height: `100%` }} />}
-              containerElement={<div style={{ height: `800px` }} />}
-              mapElement={<div style={{ height: `100%` }} />}
-              centre={{ lat: this.state.lat, lng: this.state.lng }}
+              center={{ lat: this.state.lat, lng: this.state.lng }}
+              updateCenter={this.updateCenter}
+              updateRect={this.updateRect}
+              rectangle={this.state.rectangle}
             />
           </div>
 
