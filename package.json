@@ -27,7 +27,7 @@
     "eject": "react-scripts eject",
     "flow": "flow",
     "flow:update": "flow-typed install -o",
-    "flow:coverage": "flow-coverage-report -i 'src/**/*.js' -i 'src/**/*.jsx' -x 'src/test/**' -t html -t json -t text"
+    "flow:coverage": "flow-coverage-report -i 'src/**/*.js' -i 'src/**/*.jsx' -x 'src/**/__tests__/**' -t html -t json -t text"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
