@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
-import Map from './Map';
+import Map from './components/Map';
+import MapControl from './components/MapControl';
 import './App.css';
 import type { Rectangle } from './types';
 import type { Rectangle as RectangleComponent } from 'react-google-maps';
@@ -124,24 +125,18 @@ class App extends React.Component<*, State> {
               ultrices posuere cubilia Curae; Donec sagittis enim.
             </p>
             <div className="controls">
-              <div>
-                <label htmlFor="lat">Latitude</label>
-                <input
-                  name="lat"
-                  value={this.state.lat}
-                  onChange={this.handleControlChange}
-                  type="number"
-                />
-              </div>
-              <div>
-                <label htmlFor="lng">Longtitude</label>
-                <input
-                  name="lng"
-                  value={this.state.lng}
-                  onChange={this.handleControlChange}
-                  type="number"
-                />
-              </div>
+              <MapControl
+                name="lat"
+                value={this.state.lat}
+                onChange={this.handleControlChange}
+                labelText="Lattitude"
+              />
+              <MapControl
+                name="lng"
+                value={this.state.lng}
+                onChange={this.handleControlChange}
+                labelText="Longtitude"
+              />
             </div>
             <div style={{ padding: '10px 0' }}>
               Total Area of Rectangle:<span>
