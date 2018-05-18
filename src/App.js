@@ -12,6 +12,10 @@ type State = {
   surfaceArea: number
 };
 
+const roundNumber = numberToRound => {
+  return Math.round(numberToRound * 100) / 100;
+};
+
 class App extends React.Component<*, State> {
   rectangle: ?RectangleComponent;
 
@@ -108,7 +112,7 @@ class App extends React.Component<*, State> {
             <div style={{ padding: '10px 0' }}>
               Total Area of Rectangle:<span>
                 {' '}
-                {this.state.totalArea} m<sup>2</sup>
+                {roundNumber(this.state.totalArea)} m<sup>2</sup>
               </span>
             </div>
 
@@ -120,7 +124,7 @@ class App extends React.Component<*, State> {
               Total Surface Area of roads in rectangle:
               <span>
                 {' '}
-                {this.state.surfaceArea} m<sup>2</sup>
+                {roundNumber(this.state.surfaceArea)} m<sup>2</sup>
               </span>
             </div>
           </div>
