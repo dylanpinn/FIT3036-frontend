@@ -12,15 +12,16 @@ const styles = {
 };
 
 type Props = {
-  classes: Object
+  classes: Object,
+  title: string
 };
 
-const Header = ({ classes }: Props) => (
-  <div className={classes.root}>
+const Header = ({ classes, title }: Props) => (
+  <div data-testid="header" className={classes.root}>
     <AppBar position="static">
       <Toolbar>
         <Typography variant="title" color="inherit">
-          FIT3036 - Computer Science Project
+          {title}
         </Typography>
       </Toolbar>
     </AppBar>

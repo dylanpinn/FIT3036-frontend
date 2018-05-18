@@ -79,7 +79,7 @@ class App extends React.Component<*, State> {
     return (
       <div className="App">
         <CssBaseline />
-        <Header />
+        <Header title="FIT3036 - Computer Science Project" />
         <div className="main">
           <div className="map-wrapper">
             <Map
