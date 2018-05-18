@@ -3,6 +3,7 @@ import * as React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Map from './components/Map';
 import MapControl from './components/MapControl';
+import Header from './components/Header';
 import './App.css';
 import type { Rectangle, Coordinate } from './types';
 
@@ -78,9 +79,7 @@ class App extends React.Component<*, State> {
     return (
       <div className="App">
         <CssBaseline />
-        <header className="App-header">
-          <h1 className="App-title">FIT3036 - Computer Science Project</h1>
-        </header>
+        <Header />
         <div className="main">
           <div className="map-wrapper">
             <Map
