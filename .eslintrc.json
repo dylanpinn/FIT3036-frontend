@@ -7,6 +7,9 @@
     "plugin:flowtype/recommended"
   ],
   "plugins": ["jsx-a11y", "flowtype"],
+  "rules": {
+    "no-console": ["error", { "allow": ["warn", "error"] }]
+  },
   "settings": {
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true
