@@ -10,8 +10,16 @@ type Props = {
 
 const MapControl = ({ name, value, onChange, labelText }: Props) => (
   <div>
-    <label htmlFor={name}>{labelText}</label>
-    <input value={value} onChange={onChange} type="number" />
+    <label htmlFor={name} data-testid="mapcontrol-label">
+      {labelText}
+    </label>
+    <input
+      value={value}
+      onChange={onChange}
+      type="number"
+      data-testid="mapcontrol-input"
+      name={name}
+    />
   </div>
 );
 
