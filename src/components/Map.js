@@ -88,7 +88,7 @@ class Map extends React.Component<Props> {
 
 type RenderMapProps = {
   center: Coordinate,
-  rectangle: RectangleType,
+  rectangle: ?RectangleType,
   onMapChange: () => void,
   mapMounted: (r: MapComponent) => void,
   rectangleMounted: (r: RectangleComponent) => void,
