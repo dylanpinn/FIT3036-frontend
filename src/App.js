@@ -1,7 +1,11 @@
 // @flow
 import * as React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import Map from './components/Map';
 import MapControl from './components/MapControl';
+import Header from './components/Header';
 import './App.css';
 import type { Rectangle, Coordinate } from './types';
 
@@ -76,9 +80,8 @@ class App extends React.Component<*, State> {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">FIT3036 - Computer Science Project</h1>
-        </header>
+        <CssBaseline />
+        <Header title="FIT3036 - Computer Science Project" />
         <div className="main">
           <div className="map-wrapper">
             <Map
@@ -90,16 +93,15 @@ class App extends React.Component<*, State> {
           </div>
 
           <div className="information-wrapper">
-            <h2>Instructions</h2>
-            <p className="instructions">
-              {/* TODO: Add instructions. */}
+            <Typography variant="headline" gutterBottom>
+              Instructions
+            </Typography>
+            {/* TODO: Add instructions. */}
+            <Typography variant="body1" gutterBottom>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
               ornare mi quam, non efficitur urna venenatis malesuada. Donec quis
               ipsum pharetra tellus maximus dictum feugiat quis orci.
-              Pellentesque efficitur sapien magna, quis placerat velit faucibus
-              cursus. Vestibulum ante ipsum primis in faucibus orci luctus et
-              ultrices posuere cubilia Curae; Donec sagittis enim.
-            </p>
+            </Typography>
             <div className="controls">
               <MapControl
                 name="lat"
@@ -114,24 +116,24 @@ class App extends React.Component<*, State> {
                 labelText="Longtitude"
               />
             </div>
-            <div style={{ padding: '10px 0' }}>
+            <Typography variant="body1" gutterBottom>
               Total Area of Rectangle:<span>
                 {' '}
                 {roundNumber(this.state.totalArea)} m<sup>2</sup>
               </span>
-            </div>
-
+            </Typography>
             <div style={{ padding: '10px 0' }}>
-              <button onClick={this.calculateRoadArea}>Calculate Area</button>
+              <Button onClick={this.calculateRoadArea} color="primary">
+                Calculate Area
+              </Button>
             </div>
-
-            <div style={{ padding: '10px 0' }}>
+            <Typography variant="body1" gutterBottom>
               Total Surface Area of roads in rectangle:
               <span>
                 {' '}
                 {roundNumber(this.state.surfaceArea)} m<sup>2</sup>
               </span>
-            </div>
+            </Typography>
           </div>
         </div>
       </div>

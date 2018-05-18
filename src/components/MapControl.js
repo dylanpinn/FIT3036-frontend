@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import TextField from '@material-ui/core/TextField';
 
 type Props = {
   name: string,
@@ -10,10 +11,8 @@ type Props = {
 
 const MapControl = ({ name, value, onChange, labelText }: Props) => (
   <div>
-    <label htmlFor={name} data-testid="mapcontrol-label">
-      {labelText}
-    </label>
-    <input
+    <TextField
+      label={labelText}
       value={value}
       onChange={onChange}
       type="number"
