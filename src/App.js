@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
-import Map from './Map';
+import Map from './components/Map';
+import MapControl from './components/MapControl';
 import './App.css';
 import type { Rectangle } from './types';
 import type { Rectangle as RectangleComponent } from 'react-google-maps';
@@ -9,7 +10,9 @@ const GOOGLE_MAPS_API_KEY = 'AIzaSyC60FyPR7iVZWTMOjoWJdKrnRsM4MbTsUY';
 type State = {
   rectangle?: Rectangle,
   totalArea: number,
-  surfaceArea: number
+  surfaceArea: number,
+  lat: number,
+  lng: number
 };
 
 const roundNumber = numberToRound => {
@@ -22,6 +25,8 @@ class App extends React.Component<*, State> {
   constructor() {
     super();
     this.state = {
+      lat: -37.911716,
+      lng: 145.127197,
       totalArea: 0,
       surfaceArea: 0
     };
@@ -78,6 +83,14 @@ class App extends React.Component<*, State> {
     }
   };
 
+  handleControlChange = (event: SyntheticEvent<HTMLInputElement>) => {
+    const target = event.currentTarget;
+    const value = Number(target.value);
+    const name = target.name;
+
+    this.setState({ [name]: value });
+  };
+
   render() {
     const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${GOOGLE_MAPS_API_KEY}&libraries=geometry,drawing,places`;
 
@@ -96,6 +109,7 @@ class App extends React.Component<*, State> {
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `800px` }} />}
               mapElement={<div style={{ height: `100%` }} />}
+              centre={{ lat: this.state.lat, lng: this.state.lng }}
             />
           </div>
 
@@ -110,6 +124,20 @@ class App extends React.Component<*, State> {
               cursus. Vestibulum ante ipsum primis in faucibus orci luctus et
               ultrices posuere cubilia Curae; Donec sagittis enim.
             </p>
+            <div className="controls">
+              <MapControl
+                name="lat"
+                value={this.state.lat}
+                onChange={this.handleControlChange}
+                labelText="Lattitude"
+              />
+              <MapControl
+                name="lng"
+                value={this.state.lng}
+                onChange={this.handleControlChange}
+                labelText="Longtitude"
+              />
+            </div>
             <div style={{ padding: '10px 0' }}>
               Total Area of Rectangle:<span>
                 {' '}
