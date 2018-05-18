@@ -19,6 +19,7 @@ const MapControl = ({ name, value, onChange, labelText }: Props) => (
       type="number"
       data-testid="mapcontrol-input"
       name={name}
+      id={name}
     />
   </div>
 );
