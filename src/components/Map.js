@@ -54,8 +54,8 @@ class Map extends React.Component<Props> {
         if (_this.circle) {
           const bounds = _this.circle.getBounds();
           const rectangle = {
-            south: bounds.f.f,
-            north: bounds.f.b,
+            north: bounds.f.f,
+            south: bounds.f.b,
             east: bounds.b.f,
             west: bounds.b.b
           };
