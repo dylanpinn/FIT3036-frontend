@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Map from './components/Map';
 import MapControl from './components/MapControl';
 import Header from './components/Header';
-import './App.css';
+import './styles/App.css';
 import type { Rectangle, Coordinate } from './types';
 
 type State = {
