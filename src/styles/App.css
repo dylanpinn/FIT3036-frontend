@@ -11,6 +11,29 @@
 }
 
 .information-wrapper {
+  background: #fff;
   width: 25%;
   padding: 15px;
+}
+
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .map-wrapper {
+    order: 1;
+    width: 100%;
+  }
+
+  .information-wrapper {
+    order: -1;
+    width: 100%;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+  }
 }
