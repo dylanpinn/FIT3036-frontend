@@ -5,3 +5,10 @@
   bottom: 0;
   right: calc(0px + 25%); /* stylelint-disable-line length-zero-no-unit */
 }
+
+@media (max-width: 768px) {
+  .map-container {
+    top: 360px;
+    right: 0;
+  }
+}
