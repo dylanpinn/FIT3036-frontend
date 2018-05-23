@@ -99,7 +99,7 @@ type RenderMapProps = {
 const RenderMap = withScriptjs(
   withGoogleMap((props: RenderMapProps) => (
     <GoogleMap
-      defaultZoom={14}
+      defaultZoom={15}
       center={props.center}
       onBoundsChanged={props.onMapChange}
       ref={map => props.mapMounted(map)}
@@ -113,7 +113,7 @@ const RenderMap = withScriptjs(
       <Circle
         visible={false}
         center={props.center}
-        radius={1000}
+        radius={500}
         ref={circle => props.circleMounted(circle)}
       />
     </GoogleMap>

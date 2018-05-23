@@ -74,6 +74,7 @@ class App extends React.Component<*, State> {
     this.setState({ lat: center.lat, lng: center.lng });
   };
   updateRect = (rectangle: Rectangle) => {
+    this.fetchArea(rectangle);
     this.setState({ rectangle });
   };
 
