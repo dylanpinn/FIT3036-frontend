@@ -13,6 +13,7 @@ import type {
   GoogleMap as MapComponent,
   Circle as CircleComponent
 } from 'react-google-maps';
+import '../styles/Map.css';
 
 type Props = {
   rectangle: ?RectangleType,
@@ -72,7 +73,7 @@ class Map extends React.Component<Props> {
         <RenderMap
           googleMapURL={mapURL}
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `500px` }} />}
+          containerElement={<div className="map-container" />}
           mapElement={<div style={{ height: `100%` }} />}
           rectangleMounted={this.rectangleMounted}
           circleMounted={this.circleMounted}
