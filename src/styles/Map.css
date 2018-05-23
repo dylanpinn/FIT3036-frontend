@@ -3,5 +3,5 @@
   left: 0;
   top: 64px;
   bottom: 0;
-  right: calc(0 + 25%);
+  right: calc(0px + 25%); /* stylelint-disable-line length-zero-no-unit */
 }
