@@ -97,24 +97,23 @@ class App extends React.Component<*, State> {
             <Typography variant="headline" gutterBottom>
               Instructions
             </Typography>
-            {/* TODO: Add instructions. */}
-            <Typography variant="body1" gutterBottom>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-              ornare mi quam, non efficitur urna venenatis malesuada. Donec quis
-              ipsum pharetra tellus maximus dictum feugiat quis orci.
+            <Typography variant="body1">
+              Either drag the map around until the square is over the required
+              area, or use the Latitude &amp; Longitude inputs to specify the
+              area.
             </Typography>
             <div className="controls">
               <MapControl
                 name="lat"
                 value={this.state.lat}
                 onChange={this.handleControlChange}
-                labelText="Lattitude"
+                labelText="Latitude"
               />
               <MapControl
                 name="lng"
                 value={this.state.lng}
                 onChange={this.handleControlChange}
-                labelText="Longtitude"
+                labelText="Longitude"
               />
             </div>
             <Typography variant="body1" gutterBottom>
