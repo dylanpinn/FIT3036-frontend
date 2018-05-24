@@ -14,7 +14,8 @@ type State = {
   totalArea: number,
   surfaceArea: number,
   lat: number,
-  lng: number
+  lng: number,
+  buttonDisabled: boolean
 };
 
 const roundNumber = numberToRound => {
@@ -37,7 +38,8 @@ class App extends React.Component<*, State> {
       lat: -37.911716,
       lng: 145.127197,
       totalArea: 0,
-      surfaceArea: 0
+      surfaceArea: 0,
+      buttonDisabled: false
     };
   }
 
@@ -63,6 +65,7 @@ class App extends React.Component<*, State> {
 
   calculateRoadArea = async () => {
     try {
+      this.setState({ buttonDisabled: true });
       const response = await fetch(`${apiEndpoint()}roadArea`, {
         body: JSON.stringify(this.state.rectangle),
         method: 'POST',
@@ -74,9 +77,10 @@ class App extends React.Component<*, State> {
       });
       if (response.ok) {
         const data = await response.json();
-        this.setState({ surfaceArea: data });
+        this.setState({ surfaceArea: data, buttonDisabled: false });
       }
     } catch (e) {
+      this.setState({ buttonDisabled: false });
       console.error(e);
     }
   };
@@ -142,7 +146,12 @@ class App extends React.Component<*, State> {
               </span>
             </Typography>
             <div style={{ padding: '10px 0' }}>
-              <Button onClick={this.calculateRoadArea} color="primary">
+              <Button
+                onClick={this.calculateRoadArea}
+                color="primary"
+                variant="raised"
+                disabled={this.state.buttonDisabled}
+              >
                 Calculate Area
               </Button>
             </div>
