@@ -45,7 +45,8 @@ class App extends React.Component<*, State> {
     try {
       const response = await fetch(`${apiEndpoint()}area`, {
         body: JSON.stringify(rectangle),
-        method: 'POST'
+        method: 'POST',
+        mode: 'cors'
       });
       if (response.ok) {
         const data = await response.json();
@@ -60,7 +61,8 @@ class App extends React.Component<*, State> {
     try {
       const response = await fetch(`${apiEndpoint()}roadArea`, {
         body: JSON.stringify(this.state.rectangle),
-        method: 'POST'
+        method: 'POST',
+        mode: 'cors'
       });
       if (response.ok) {
         const data = await response.json();
