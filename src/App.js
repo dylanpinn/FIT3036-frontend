@@ -21,6 +21,15 @@ const roundNumber = numberToRound => {
   return Math.round(numberToRound * 100) / 100;
 };
 
+const apiEndpoint = () => {
+  let API_ENDPOINT = '/';
+  if (process.env.NODE_ENV === 'production') {
+    API_ENDPOINT =
+      'https://jkzxw6z5q1.execute-api.ap-southeast-2.amazonaws.com/dev';
+  }
+  return API_ENDPOINT;
+};
+
 class App extends React.Component<*, State> {
   constructor() {
     super();
@@ -34,7 +43,7 @@ class App extends React.Component<*, State> {
 
   fetchArea = async (rectangle: Rectangle) => {
     try {
-      const response = await fetch('/area', {
+      const response = await fetch(`${apiEndpoint()}area`, {
         body: JSON.stringify(rectangle),
         method: 'POST'
       });
@@ -49,7 +58,7 @@ class App extends React.Component<*, State> {
 
   calculateRoadArea = async () => {
     try {
-      const response = await fetch('/roadArea', {
+      const response = await fetch(`${apiEndpoint()}roadArea`, {
         body: JSON.stringify(this.state.rectangle),
         method: 'POST'
       });
