@@ -142,7 +142,7 @@ class App extends React.Component<*, State> {
             <Typography variant="body1" gutterBottom>
               Total Area of Rectangle:<span>
                 {' '}
-                {roundNumber(this.state.totalArea * 1000)} m<sup>2</sup>
+                {roundNumber(this.state.totalArea)} km<sup>2</sup>
               </span>
             </Typography>
             <div style={{ padding: '10px 0' }}>
@@ -159,7 +159,7 @@ class App extends React.Component<*, State> {
               Total Surface Area of roads in rectangle:
               <span>
                 {' '}
-                {roundNumber(this.state.surfaceArea * 1000)} m<sup>2</sup>
+                {roundNumber(this.state.surfaceArea)} km<sup>2</sup>
               </span>
             </Typography>
           </div>
