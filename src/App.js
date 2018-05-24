@@ -25,7 +25,7 @@ const apiEndpoint = () => {
   let API_ENDPOINT = '/';
   if (process.env.NODE_ENV === 'production') {
     API_ENDPOINT =
-      'https://jkzxw6z5q1.execute-api.ap-southeast-2.amazonaws.com/dev';
+      'https://jkzxw6z5q1.execute-api.ap-southeast-2.amazonaws.com/dev/';
   }
   return API_ENDPOINT;
 };
