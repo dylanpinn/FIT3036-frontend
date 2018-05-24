@@ -46,7 +46,11 @@ class App extends React.Component<*, State> {
       const response = await fetch(`${apiEndpoint()}area`, {
         body: JSON.stringify(rectangle),
         method: 'POST',
-        mode: 'cors'
+        mode: 'cors',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
       });
       if (response.ok) {
         const data = await response.json();
@@ -62,7 +66,11 @@ class App extends React.Component<*, State> {
       const response = await fetch(`${apiEndpoint()}roadArea`, {
         body: JSON.stringify(this.state.rectangle),
         method: 'POST',
-        mode: 'cors'
+        mode: 'cors',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
       });
       if (response.ok) {
         const data = await response.json();
