@@ -14,11 +14,21 @@ type State = {
   totalArea: number,
   surfaceArea: number,
   lat: number,
-  lng: number
+  lng: number,
+  buttonDisabled: boolean
 };
 
 const roundNumber = numberToRound => {
   return Math.round(numberToRound * 100) / 100;
+};
+
+const apiEndpoint = () => {
+  let API_ENDPOINT = '/';
+  if (process.env.NODE_ENV === 'production') {
+    API_ENDPOINT =
+      'https://lufe1ov341.execute-api.ap-southeast-2.amazonaws.com/dev/';
+  }
+  return API_ENDPOINT;
 };
 
 class App extends React.Component<*, State> {
@@ -28,15 +38,21 @@ class App extends React.Component<*, State> {
       lat: -37.911716,
       lng: 145.127197,
       totalArea: 0,
-      surfaceArea: 0
+      surfaceArea: 0,
+      buttonDisabled: false
     };
   }
 
   fetchArea = async (rectangle: Rectangle) => {
     try {
-      const response = await fetch('/area', {
+      const response = await fetch(`${apiEndpoint()}area`, {
         body: JSON.stringify(rectangle),
-        method: 'POST'
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
       });
       if (response.ok) {
         const data = await response.json();
@@ -49,15 +65,22 @@ class App extends React.Component<*, State> {
 
   calculateRoadArea = async () => {
     try {
-      const response = await fetch('/roadArea', {
+      this.setState({ buttonDisabled: true });
+      const response = await fetch(`${apiEndpoint()}roadArea`, {
         body: JSON.stringify(this.state.rectangle),
-        method: 'POST'
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
       });
       if (response.ok) {
         const data = await response.json();
-        this.setState({ surfaceArea: data });
+        this.setState({ surfaceArea: data, buttonDisabled: false });
       }
     } catch (e) {
+      this.setState({ buttonDisabled: false });
       console.error(e);
     }
   };
@@ -123,7 +146,12 @@ class App extends React.Component<*, State> {
               </span>
             </Typography>
             <div style={{ padding: '10px 0' }}>
-              <Button onClick={this.calculateRoadArea} color="primary">
+              <Button
+                onClick={this.calculateRoadArea}
+                color="primary"
+                variant="raised"
+                disabled={this.state.buttonDisabled}
+              >
                 Calculate Area
               </Button>
             </div>
