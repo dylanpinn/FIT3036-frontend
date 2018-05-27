@@ -16,6 +16,10 @@ was bootstrapped by `create-react-app`.
 
 * `yarn install` -- installs the required dependencies.
 
+## Run Locally
+
+* `yarn start` -- starts local Webpack server; access via http://localhost:3000
+
 ## Deploy
 
 This is automatically deployed from the `master` branch using Netlify
