@@ -22,13 +22,14 @@ const roundNumber = numberToRound => {
   return Math.round(numberToRound * 100) / 100;
 };
 
+// This sets the API endpoint for development and production.
 const apiEndpoint = () => {
-  let API_ENDPOINT = '/';
+  let apiEndpoint = '/';
   if (process.env.NODE_ENV === 'production') {
-    API_ENDPOINT =
+    apiEndpoint =
       'https://lufe1ov341.execute-api.ap-southeast-2.amazonaws.com/dev/';
   }
-  return API_ENDPOINT;
+  return apiEndpoint;
 };
 
 class App extends React.Component<*, State> {
@@ -43,6 +44,7 @@ class App extends React.Component<*, State> {
     };
   }
 
+  // Call the area API and set the result.
   fetchArea = async (rectangle: Rectangle) => {
     try {
       const response = await fetch(`${apiEndpoint()}area`, {
@@ -63,6 +65,7 @@ class App extends React.Component<*, State> {
     }
   };
 
+  // Call the road area API and save the result.
   calculateRoadArea = async () => {
     try {
       this.setState({ buttonDisabled: true });
@@ -85,6 +88,7 @@ class App extends React.Component<*, State> {
     }
   };
 
+  // Handle Latitude and Longitude input changes.
   handleControlChange = (event: SyntheticEvent<HTMLInputElement>) => {
     const target = event.currentTarget;
     const value = Number(target.value);
@@ -93,9 +97,12 @@ class App extends React.Component<*, State> {
     this.setState({ [name]: value });
   };
 
+  // Update the centre of the map.
   updateCenter = (center: Coordinate) => {
     this.setState({ lat: center.lat, lng: center.lng });
   };
+
+  // Update the overlay rectangle.
   updateRect = (rectangle: Rectangle) => {
     this.fetchArea(rectangle);
     this.setState({ rectangle });

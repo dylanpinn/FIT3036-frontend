@@ -96,6 +96,7 @@ type RenderMapProps = {
   circleMounted: (r: CircleComponent) => void
 };
 
+// Render Google Maps
 const RenderMap = withScriptjs(
   withGoogleMap((props: RenderMapProps) => (
     <GoogleMap
