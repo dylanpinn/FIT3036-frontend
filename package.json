@@ -15,7 +15,7 @@
     "flow-coverage-report": "^0.6.0",
     "flow-typed": "^2.4.0",
     "husky": "^1.1.0",
-    "jest-dom": "^1.12.1",
+    "jest-dom": "^2.0.0",
     "lint-staged": "^7.0.0",
     "prettier": "^1.11.1",
     "react-testing-library": "^5.1.0",
